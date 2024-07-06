@@ -1,0 +1,8 @@
+2024-07-06 14:36:46,971 INFO Text was entered to field ('css selector', "input[placeholder='Enter username']")!
+2024-07-06 14:36:46,971 INFO Element ('css selector', "input[placeholder='Enter username']") was found!
+2024-07-06 14:36:47,049 INFO Text was entered to field ('css selector', "input[placeholder='Enter password']")!
+2024-07-06 14:36:47,049 INFO Element ('css selector', "input[placeholder='Enter password']") was found!
+2024-07-06 14:36:47,102 INFO Click element ('css selector', "button[type='submit']") was done!
+2024-07-06 14:36:47,102 INFO Element ('css selector', "button[type='submit']") was found!
+2024-07-06 14:36:47,151 INFO Getting text from element: ('xpath', "//div[contains(@class, 'ant-notification-notice-error')]")!
+2024-07-06 14:36:47,151 INFO Element ('xpath', "//div[contains(@class, 'ant-notification-notice-error')]") was found!

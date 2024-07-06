@@ -1,0 +1,14 @@
+INFO     test_logger:base_page.py:30 Text was entered to field ('css selector', "input[placeholder='Enter username']")!
+INFO     test_logger:base_page.py:18 Element ('css selector', "input[placeholder='Enter username']") was found!
+INFO     test_logger:base_page.py:30 Text was entered to field ('css selector', "input[placeholder='Enter password']")!
+INFO     test_logger:base_page.py:18 Element ('css selector', "input[placeholder='Enter password']") was found!
+INFO     test_logger:base_page.py:26 Click element ('css selector', "button[type='submit']") was done!
+INFO     test_logger:base_page.py:18 Element ('css selector', "button[type='submit']") was found!
+INFO     test_logger:base_page.py:54 Checking if page is opened!
+INFO     test_logger:base_page.py:26 Click element ('xpath', "//span[@title='Inactive']") was done!
+INFO     test_logger:base_page.py:18 Element ('xpath', "//span[@title='Inactive']") was found!
+INFO     test_logger:base_page.py:26 Click element ('xpath', "//div[@title='Active']") was done!
+INFO     test_logger:base_page.py:18 Element ('xpath', "//div[@title='Active']") was found!
+INFO     test_logger:base_page.py:26 Click element ('xpath', "(//span[contains(text(),'Navigate')])[1]") was done!
+INFO     test_logger:base_page.py:18 Element ('xpath', "(//span[contains(text(),'Navigate')])[1]") was found!
+INFO     test_logger:base_page.py:54 Checking if page is opened!

@@ -1,0 +1,7 @@
+2024-07-06 14:36:49,219 INFO Text was entered to field ('css selector', "input[placeholder='Enter username']")!
+2024-07-06 14:36:49,219 INFO Element ('css selector', "input[placeholder='Enter username']") was found!
+2024-07-06 14:36:49,296 INFO Text was entered to field ('css selector', "input[placeholder='Enter password']")!
+2024-07-06 14:36:49,296 INFO Element ('css selector', "input[placeholder='Enter password']") was found!
+2024-07-06 14:36:49,349 INFO Click element ('css selector', "button[type='submit']") was done!
+2024-07-06 14:36:49,349 INFO Element ('css selector', "button[type='submit']") was found!
+2024-07-06 14:36:49,396 INFO Checking if page is opened!

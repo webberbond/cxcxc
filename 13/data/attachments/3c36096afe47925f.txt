@@ -1,0 +1,14 @@
+2024-07-06 14:36:41,183 INFO Text was entered to field ('css selector', "input[placeholder='Enter username']")!
+2024-07-06 14:36:41,184 INFO Element ('css selector', "input[placeholder='Enter username']") was found!
+2024-07-06 14:36:41,266 INFO Text was entered to field ('css selector', "input[placeholder='Enter password']")!
+2024-07-06 14:36:41,266 INFO Element ('css selector', "input[placeholder='Enter password']") was found!
+2024-07-06 14:36:41,318 INFO Click element ('css selector', "button[type='submit']") was done!
+2024-07-06 14:36:41,318 INFO Element ('css selector', "button[type='submit']") was found!
+2024-07-06 14:36:41,370 INFO Checking if page is opened!
+2024-07-06 14:36:41,894 INFO Click element ('xpath', "//span[@title='Inactive']") was done!
+2024-07-06 14:36:41,895 INFO Element ('xpath', "//span[@title='Inactive']") was found!
+2024-07-06 14:36:41,941 INFO Click element ('xpath', "//div[@title='Active']") was done!
+2024-07-06 14:36:41,941 INFO Element ('xpath', "//div[@title='Active']") was found!
+2024-07-06 14:36:44,001 INFO Click element ('xpath', "(//span[contains(text(),'Navigate')])[1]") was done!
+2024-07-06 14:36:44,001 INFO Element ('xpath', "(//span[contains(text(),'Navigate')])[1]") was found!
+2024-07-06 14:36:44,087 INFO Checking if page is opened!

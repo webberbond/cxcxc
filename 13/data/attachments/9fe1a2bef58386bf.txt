@@ -1,0 +1,8 @@
+INFO     test_logger:base_page.py:30 Text was entered to field ('css selector', "input[placeholder='Enter username']")!
+INFO     test_logger:base_page.py:18 Element ('css selector', "input[placeholder='Enter username']") was found!
+INFO     test_logger:base_page.py:30 Text was entered to field ('css selector', "input[placeholder='Enter password']")!
+INFO     test_logger:base_page.py:18 Element ('css selector', "input[placeholder='Enter password']") was found!
+INFO     test_logger:base_page.py:26 Click element ('css selector', "button[type='submit']") was done!
+INFO     test_logger:base_page.py:18 Element ('css selector', "button[type='submit']") was found!
+INFO     test_logger:base_page.py:38 Getting text from element: ('xpath', "//div[contains(@class, 'ant-notification-notice-error')]")!
+INFO     test_logger:base_page.py:18 Element ('xpath', "//div[contains(@class, 'ant-notification-notice-error')]") was found!
