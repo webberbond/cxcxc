@@ -2,11 +2,12 @@ name: test01
 on:
   push:
 env:
-  BASE_URL: ${{ env.BASE_URL }}
-  DASHBOARD_EMAIL: ${{ env.DASHBOARD_EMAIL }}
-  DASHBOARD_PASSWORD: ${{ env.DASHBOARD_PASSWORD }}
-  DASHBOARD_ERROR_EMAIL: ${{ env.DASHBOARD_ERROR_EMAIL }}
-  DASHBOARD_ERROR_PASSWORD: ${{ env.DASHBOARD_ERROR_PASSWORD }}
+  BASE_URL: ${{ secrets.BASE_URL }}
+  DASHBOARD_EMAIL: ${{ secrets.DASHBOARD_EMAIL }}
+  DASHBOARD_PASSWORD: ${{ secrets.DASHBOARD_PASSWORD }}
+  DASHBOARD_ERROR_EMAIL: ${{ secrets.DASHBOARD_ERROR_EMAIL }}
+  DASHBOARD_ERROR_PASSWORD: ${{ secrets.DASHBOARD_ERROR_PASSWORD }}
+
 jobs:
   test01:
     runs-on: ubuntu-latest
@@ -21,5 +22,5 @@ jobs:
         run: sudo apt-get install -y chromium-browser
       - name: Install the necessary packages
         run: pip install requests webdriver-manager selenium pytest pydantic-settings
-      - name: Run the PytTest script
+      - name: Run the PyTest script
         run: pytest -rA
