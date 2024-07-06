@@ -10,6 +10,7 @@ env:
   DASHBOARD_ERROR_PASSWORD: ${{ secrets.DASHBOARD_ERROR_PASSWORD }}
   ALLURE_RESULTS_PATH: allure-results # Define ALLURE_RESULTS_PATH here
   GITHUB_TOKEN: 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
+  
 
 jobs:
   tests:
