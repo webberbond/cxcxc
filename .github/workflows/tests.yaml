@@ -40,9 +40,6 @@ jobs:
       - name: Install the necessary packages
         run: pip install requests webdriver-manager selenium pytest pydantic-settings allure-pytest
 
-      - name: Prepare Allure history
-        run: mkdir -p ../${{ env.ALLURE_RESULTS_PATH }}
-
       - name: Run the PyTest script
         run: |
            pytest -rA --alluredir=../${{ env.ALLURE_RESULTS_PATH }}
