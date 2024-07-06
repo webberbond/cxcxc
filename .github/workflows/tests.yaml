@@ -9,6 +9,7 @@ env:
   DASHBOARD_ERROR_EMAIL: ${{ secrets.DASHBOARD_ERROR_EMAIL }}
   DASHBOARD_ERROR_PASSWORD: ${{ secrets.DASHBOARD_ERROR_PASSWORD }}
   ALLURE_RESULTS_PATH: allure-results # Define ALLURE_RESULTS_PATH here
+  
 
 jobs:
   tests:
