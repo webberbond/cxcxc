@@ -8,13 +8,18 @@ env:
   DASHBOARD_PASSWORD: ${{ secrets.DASHBOARD_PASSWORD }}
   DASHBOARD_ERROR_EMAIL: ${{ secrets.DASHBOARD_ERROR_EMAIL }}
   DASHBOARD_ERROR_PASSWORD: ${{ secrets.DASHBOARD_ERROR_PASSWORD }}
+  ALLURE_RESULTS_PATH: allure-results # Define ALLURE_RESULTS_PATH here
 
 jobs:
   tests:
-    runs-on: gha-runner-scale-set
+    runs-on: ubuntu-20.04
+    defaults:
+      run:
+        shell: bash
+        working-directory: ./tests
     steps:
       - name: Check out this repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Set up Python
         uses: actions/setup-python@v2
@@ -33,7 +38,48 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y google-chrome-stable
 
       - name: Install the necessary packages
-        run: pip install requests webdriver-manager selenium pytest pydantic-settings
+        run: pip install requests webdriver-manager selenium pytest pydantic-settings allure-pytest
+
+      - name: Prepare Allure history
+        run: mkdir -p ../${{ env.ALLURE_RESULTS_PATH }}
 
       - name: Run the PyTest script
-        run: pytest -rA
+        run: |
+           pytest -rA --alluredir=../${{ env.ALLURE_RESULTS_PATH }}
+
+      - name: Get Allure history
+        uses: actions/checkout@v3
+        if: always()
+        continue-on-error: true
+        with:
+          ref: gh-pages
+          path: gh-pages
+
+      - name: Allure report action
+        uses: simple-elf/allure-report-action@master
+        if: always()
+        with:
+          allure_results: ${{ env.ALLURE_RESULTS_PATH }}
+          allure_history: allure-history
+          keep_reports: 5
+
+      - name: Deploy Allure report to GitHub Pages
+        if: always()
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: allure-history
+
+      - name: Send Telegram Notification
+        if: always()
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_ID }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          format: html
+          message: |
+            <b>Test Results</b>
+            <a href="https://github.com/${{ github.repository }}/tree/gh-pages/index.html">View Allure Report</a>
+            <b>${{ github.actor }}</b> pushed to <b>${{ github.ref }}</b>
+            ${{ github.repository }}
