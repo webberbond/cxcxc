@@ -25,4 +25,5 @@ class LoginTest(BaseTest):
         self.assertEqual(self.login_page.get_notification_text(), "Invalid password", "Error text is incorrect")
 
     def test_forgot_password(self):
+        print("f")
         pass
