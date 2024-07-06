@@ -9,6 +9,7 @@ env:
   DASHBOARD_ERROR_EMAIL: ${{ secrets.DASHBOARD_ERROR_EMAIL }}
   DASHBOARD_ERROR_PASSWORD: ${{ secrets.DASHBOARD_ERROR_PASSWORD }}
   ALLURE_RESULTS_PATH: allure-results # Define ALLURE_RESULTS_PATH here
+  GITHUB_TOKEN: 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
 
 jobs:
   tests:
@@ -69,3 +70,24 @@ jobs:
           allure_results: ${{ env.ALLURE_RESULTS_PATH }}
           allure_history: allure-history
           keep_reports: 5
+
+      - name: Deploy Allure report to GitHub Pages
+        if: always()
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: gh-pages
+          publish_dir: allure-history
+
+      - name: Send Telegram Notification
+        if: always()
+        uses: appleboy/telegram-action@master
+        with:
+            to: ${{ secrets.TELEGRAM_ID }}
+            token: ${{ secrets.TELEGRAM_TOKEN }}
+            format: html
+            message: |
+              <b>Test Results</b>
+              <a href="https://github.com/${{ github.repository }}/tree/gh-pages/index.html">View Allure Report</a>
+              <b>${{ github.actor }}</b> pushed to <b>${{ github.ref }}</b>
+              ${{ github.repository }}
