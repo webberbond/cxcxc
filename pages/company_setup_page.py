@@ -1,3 +1,5 @@
+import time
+
 from selenium.webdriver.common.by import By
 
 from locators.company_setup_page_locators import CompanySetupPageLocators
@@ -17,4 +19,5 @@ class CompanySetupPage(BasePage):
         return self.click(self.company_setup_page_locators.ACTIVE_DROPDOWN_OPTION)
 
     def click_navigate_button(self):
+        time.sleep(2)
         return self.click(self.company_setup_page_locators.COMPANY_NAVIGATE_BUTTON)

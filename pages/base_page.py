@@ -16,7 +16,7 @@ class BasePage:
 
     def find_element(self, locator):
         test_logger.info(f"Element {locator} was found!")
-        return self.wait.until(EC.visibility_of_element_located(locator))
+        return self.wait.until(EC.element_to_be_clickable(locator))
 
     def find_elements(self, locator):
         test_logger.info(f"Element {locator} was found!")
