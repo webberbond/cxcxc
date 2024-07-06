@@ -51,6 +51,7 @@ jobs:
 
       - name: Run the PyTest script
         run: |
+          cd ..
           pytest -rA --alluredir=../${{ env.ALLURE_RESULTS_PATH }}
 
       - name: Get Allure history
