@@ -1,0 +1,54 @@
+name: Notifications
+on:
+  push:
+  pull_request:
+    types: ['opened', 'closed']
+jobs:
+  push_notification:
+    name: Push Notification
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Telegram Push Message
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_ID }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          format: html
+          message: |
+            <code>${{ github.event.head_commit.message }}</code>
+            <b>${{ github.actor }}</b> <a href="https://github.com/${{ github.repository }}/commit/${{ github.sha }}">pushed</a> to <b>${{ github.ref }}</b> 
+            ${{ github.repository }}
+  pull_request_notification_opened:
+    name: Pull Request Notification (Opened)
+    if: github.event_name == 'pull_request' && github.event.action == 'opened'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Telegram Pull Open Message
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_ID }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          format: html
+          message: |
+            <code>${{ github.event.pull_request.title }}</code>
+            <a href="${{ github.event.pull_request.html_url }}"><b>PR opened</b></a>
+            <b>${{ github.actor }}</b> opened PR 
+            <b>${{ github.repository }}</b>
+      - uses: actions/checkout@master
+  pull_request_notification_closed:
+    name: Pull Request Notification (Closed)
+    if: github.event_name == 'pull_request' && github.event.action == 'closed'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Telegram Pull Close Message
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.TELEGRAM_ID }}
+          token: ${{ secrets.TELEGRAM_TOKEN }}
+          format: html
+          message: |
+            <code>${{ github.event.pull_request.title }}</code>
+            <a href="${{ github.event.pull_request.html_url }}"><b>PR closed</b></a>
+            <b>${{ github.actor }}</b> closed PR 
+            <b>${{ github.repository }}</b>

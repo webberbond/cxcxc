@@ -1,6 +1,7 @@
-name: test01
+name: selenium-tests
 on:
   push:
+
 env:
   BASE_URL: ${{ secrets.BASE_URL }}
   DASHBOARD_EMAIL: ${{ secrets.DASHBOARD_EMAIL }}
@@ -9,18 +10,30 @@ env:
   DASHBOARD_ERROR_PASSWORD: ${{ secrets.DASHBOARD_ERROR_PASSWORD }}
 
 jobs:
-  test01:
-    runs-on: ubuntu-latest
+  tests:
+    runs-on: gha-runner-scale-set
     steps:
       - name: Check out this repo
         uses: actions/checkout@v2
+
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
           python-version: '3.12'
-      - name: Install software
-        run: sudo apt-get install -y chromium-browser
+
+      - name: Install dependencies
+        run: sudo apt-get update && sudo apt-get install -y wget apt-transport-https
+
+      - name: Add Google Chrome repository
+        run: |
+          wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+          sudo sh -c 'echo "deb [arch=amd64] https://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+
+      - name: Install Google Chrome
+        run: sudo apt-get update && sudo apt-get install -y google-chrome-stable
+
       - name: Install the necessary packages
         run: pip install requests webdriver-manager selenium pytest pydantic-settings
+
       - name: Run the PyTest script
         run: pytest -rA
